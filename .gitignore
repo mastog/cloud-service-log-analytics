@@ -2,3 +2,5 @@
 __pycache__/
 *.pyc
 .env.oss
+outputs/hadoop/*/
+outputs/hadoop/**/*.crc

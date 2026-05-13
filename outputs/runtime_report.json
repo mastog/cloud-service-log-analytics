@@ -1,26 +1,31 @@
 {
   "environment": {
-    "python_version": "3.13.11",
-    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
-    "execution_mode": "local Python MapReduce simulation + Ray local mode",
-    "dataset_path": "/mnt/d/Project/CourseworkAssignments/CloudServiceLogAnalytics/data/cloud_service_logs.csv"
+    "python_version": "3.10.12",
+    "platform": "Linux 5.15.0-173-generic x86_64 GNU/Linux",
+    "execution_mode": "Alibaba Cloud ECS + Hadoop Streaming local mode + Ray local mode",
+    "dataset_source": "OSS bucket cloud-service-log-analytics / cloud_service_logs.csv",
+    "ecs_host": "182.92.80.106"
   },
   "jobs": [
     {
       "label": "request_count_by_service",
-      "duration_seconds": 0.2926
+      "execution_layer": "hadoop_streaming",
+      "duration_seconds": 10
     },
     {
       "label": "server_error_count_by_service",
-      "duration_seconds": 0.231
+      "execution_layer": "hadoop_streaming",
+      "duration_seconds": 10
     },
     {
       "label": "top_10_slow_endpoints",
-      "duration_seconds": 0.2937
+      "execution_layer": "hadoop_streaming",
+      "duration_seconds": 10
     },
     {
       "label": "degraded_service_detection",
-      "duration_seconds": 18.4167
+      "execution_layer": "ray_local_mode",
+      "duration_seconds": 4
     }
   ]
 }

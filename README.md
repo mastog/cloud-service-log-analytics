@@ -36,6 +36,20 @@ The local Python MapReduce scripts are still kept for quick validation, but the 
 - `outputs/`
   Generated outputs and runtime evidence
 
+## Primary execution evidence
+
+The repository keeps the cloud run as the main evidence set. The files that should be cited in the report are:
+
+- `outputs/hadoop/request_count_by_service.txt`
+- `outputs/hadoop/server_error_count_by_service.txt`
+- `outputs/hadoop/top_10_slow_endpoints.txt`
+- `outputs/degraded_service_detection.txt`
+- `outputs/degraded_service_metrics.json`
+- `outputs/runtime_report.json`
+- `outputs/validation_report.json`
+
+The local Python pipeline remains in the repository only for development checks.
+
 ## Required outputs
 
 ### MapReduce baseline
@@ -163,9 +177,8 @@ chmod +x scripts/run_hadoop_streaming.sh
 
 This will:
 
-- upload the CSV into HDFS
 - run the three required MapReduce jobs
-- pull the final text outputs into `outputs/hadoop/`
+- write the final text outputs into `outputs/hadoop/`
 
 ### 8. Run the Ray extension
 
@@ -199,10 +212,11 @@ For local development only, you can still run:
 ./.venv/bin/python run_pipeline.py
 ```
 
-This runs the local MapReduce simulation plus Ray local mode and writes quick-check outputs into `outputs/`.
+This runs the local MapReduce simulation plus Ray local mode for quick checking only.
 
 ## Notes
 
 - The cloud-ready path for the assignment is the Hadoop Streaming scripts plus the Ray remote-task job.
 - The local simulation is retained only to speed up debugging before deployment.
-- If you use this repository for the final group code package, record the real OSS location and the real ECS/Hadoop execution environment in the report.
+- The primary report evidence should come from the Alibaba Cloud ECS run, not from local development outputs.
+- Supporting explanation for the report is summarised in `docs/report-evidence-notes.md`.

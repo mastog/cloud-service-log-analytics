@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/java-17-openjdk-amd64}"
+
 sudo apt-get update
 sudo apt-get install -y python3 python3-venv python3-pip openjdk-17-jdk wget
 
