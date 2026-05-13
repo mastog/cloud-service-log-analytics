@@ -1,0 +1,26 @@
+{
+  "environment": {
+    "python_version": "3.13.11",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "execution_mode": "local Python MapReduce simulation + Ray local mode",
+    "dataset_path": "/mnt/d/Project/CourseworkAssignments/CloudServiceLogAnalytics/data/cloud_service_logs.csv"
+  },
+  "jobs": [
+    {
+      "label": "request_count_by_service",
+      "duration_seconds": 0.2926
+    },
+    {
+      "label": "server_error_count_by_service",
+      "duration_seconds": 0.231
+    },
+    {
+      "label": "top_10_slow_endpoints",
+      "duration_seconds": 0.2937
+    },
+    {
+      "label": "degraded_service_detection",
+      "duration_seconds": 18.4167
+    }
+  ]
+}

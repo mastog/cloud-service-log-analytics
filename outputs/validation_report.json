@@ -1,0 +1,14 @@
+{
+  "request_count_check": {
+    "query": "service_name == 'payment-service'",
+    "expected_from_raw_scan": 7914
+  },
+  "server_error_check": {
+    "query": "service_name == 'payment-service' and status_code >= 500",
+    "expected_from_raw_scan": 1362
+  },
+  "slow_endpoint_check": {
+    "query": "service_name == 'search-service' and endpoint == '/search/results' and response_time_ms > 800",
+    "expected_from_raw_scan": 1174
+  }
+}

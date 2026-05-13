@@ -1,0 +1,5 @@
+auth-service,repeated timeout errors	(total=12121, slow_rate=0.045, server_error_rate=0.036, timeout_errors=199)
+notification-service,repeated timeout errors	(total=8412, slow_rate=0.0673, server_error_rate=0.0518, timeout_errors=164)
+order-service,repeated timeout errors	(total=10937, slow_rate=0.1052, server_error_rate=0.0656, timeout_errors=308)
+payment-service,high slow request rate; high server error rate; repeated timeout errors	(total=7914, slow_rate=0.2696, server_error_rate=0.1721, timeout_errors=664)
+search-service,high slow request rate; repeated timeout errors	(total=10616, slow_rate=0.4315, server_error_rate=0.0852, timeout_errors=446)

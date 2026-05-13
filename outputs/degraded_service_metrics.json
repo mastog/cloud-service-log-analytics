@@ -1,0 +1,32 @@
+{
+  "auth-service": {
+    "server_errors": 436,
+    "slow_requests": 545,
+    "timeout_errors": 199,
+    "total_requests": 12121
+  },
+  "notification-service": {
+    "server_errors": 436,
+    "slow_requests": 566,
+    "timeout_errors": 164,
+    "total_requests": 8412
+  },
+  "order-service": {
+    "server_errors": 717,
+    "slow_requests": 1151,
+    "timeout_errors": 308,
+    "total_requests": 10937
+  },
+  "payment-service": {
+    "server_errors": 1362,
+    "slow_requests": 2134,
+    "timeout_errors": 664,
+    "total_requests": 7914
+  },
+  "search-service": {
+    "server_errors": 904,
+    "slow_requests": 4581,
+    "timeout_errors": 446,
+    "total_requests": 10616
+  }
+}

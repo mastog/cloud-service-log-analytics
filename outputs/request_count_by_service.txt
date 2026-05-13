@@ -1,0 +1,5 @@
+auth-service	12121
+order-service	10937
+search-service	10616
+notification-service	8412
+payment-service	7914
