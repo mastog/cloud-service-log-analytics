@@ -25,31 +25,33 @@ def main() -> None:
     dataset = root / "data" / "cloud_service_logs.csv"
     outputs = root / "outputs"
     outputs.mkdir(exist_ok=True)
+    local_outputs = outputs / "local"
+    local_outputs.mkdir(exist_ok=True)
 
     _, request_runtime = timed_run(
         "request_count_by_service",
         run_request_count,
         dataset,
-        outputs / "request_count_by_service.txt",
+        local_outputs / "request_count_by_service.txt",
     )
     _, error_runtime = timed_run(
         "server_error_count_by_service",
         run_server_error_count,
         dataset,
-        outputs / "server_error_count_by_service.txt",
+        local_outputs / "server_error_count_by_service.txt",
     )
     _, slow_runtime = timed_run(
         "top_10_slow_endpoints",
         run_slow_endpoints,
         dataset,
-        outputs / "top_10_slow_endpoints.txt",
+        local_outputs / "top_10_slow_endpoints.txt",
     )
     _, ray_runtime = timed_run(
         "degraded_service_detection",
         run_degraded_service_detection,
         dataset,
-        outputs / "degraded_service_detection.txt",
-        outputs / "degraded_service_metrics.json",
+        local_outputs / "degraded_service_detection.txt",
+        local_outputs / "degraded_service_metrics.json",
     )
 
     runtime_report = {
@@ -61,7 +63,7 @@ def main() -> None:
         },
         "jobs": [request_runtime, error_runtime, slow_runtime, ray_runtime],
     }
-    (outputs / "runtime_report.json").write_text(
+    (local_outputs / "runtime_report.json").write_text(
         json.dumps(runtime_report, indent=2),
         encoding="utf-8",
     )
@@ -90,7 +92,7 @@ def main() -> None:
             ),
         },
     }
-    (outputs / "validation_report.json").write_text(
+    (local_outputs / "validation_report.json").write_text(
         json.dumps(validation_report, indent=2),
         encoding="utf-8",
     )

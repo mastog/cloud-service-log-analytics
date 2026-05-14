@@ -10,6 +10,8 @@ This repository contains two different execution paths:
   local validation only
 - `scripts/run_hadoop_streaming.sh` + `scripts/run_ray_extension.sh`
   formal cloud execution path
+- `scripts/measure_cloud_runtime.py`
+  formal cloud runtime measurement path
 
 If you run:
 
@@ -71,7 +73,7 @@ The repository keeps the cloud run as the main evidence set. The files that shou
 - `outputs/runtime_report.json`
 - `outputs/validation_report.json`
 
-The local Python pipeline remains in the repository only for development checks.
+The local Python pipeline remains in the repository only for development checks, and it writes into `outputs/local/` so it does not overwrite the cloud evidence files.
 
 ## Required outputs
 
@@ -248,6 +250,19 @@ PYTHON_BIN=./.venv/bin/python ./scripts/run_ray_extension.sh
 
 This is the path that produces the formal cloud outputs used in the report.
 
+## Measuring formal cloud runtime
+
+If you want a per-job cloud `runtime_report.json`, run this on ECS after the dataset is ready:
+
+```bash
+ECS_HOST=your-ecs-ip \
+JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 \
+HADOOP_HOME=/opt/hadoop \
+./.venv/bin/python scripts/measure_cloud_runtime.py
+```
+
+This script measures the three Hadoop Streaming jobs separately and then measures the Ray degraded-service detection step.
+
 ## Local validation
 
 For local development only, you can still run:
@@ -257,6 +272,18 @@ For local development only, you can still run:
 ```
 
 This runs the local MapReduce simulation plus Ray local mode for quick checking only.
+
+The local validation outputs are written to:
+
+- `outputs/local/request_count_by_service.txt`
+- `outputs/local/server_error_count_by_service.txt`
+- `outputs/local/top_10_slow_endpoints.txt`
+- `outputs/local/degraded_service_detection.txt`
+- `outputs/local/degraded_service_metrics.json`
+- `outputs/local/runtime_report.json`
+- `outputs/local/validation_report.json`
+
+It does not run Hadoop Streaming and it should not be cited as the final cloud execution evidence.
 
 It does not run Hadoop Streaming and it should not be cited as the final cloud execution evidence.
 
