@@ -10,22 +10,22 @@
     {
       "label": "request_count_by_service",
       "execution_layer": "hadoop_streaming",
-      "duration_seconds": 3.8553
+      "duration_seconds": 3.1294
     },
     {
       "label": "server_error_count_by_service",
       "execution_layer": "hadoop_streaming",
-      "duration_seconds": 2.9305
+      "duration_seconds": 3.0053
     },
     {
       "label": "top_10_slow_endpoints",
       "execution_layer": "hadoop_streaming",
-      "duration_seconds": 2.9628
+      "duration_seconds": 2.9697
     },
     {
       "label": "degraded_service_detection",
       "execution_layer": "ray_local_mode",
-      "duration_seconds": 4.4183
+      "duration_seconds": 5.3661
     }
   ]
 }
