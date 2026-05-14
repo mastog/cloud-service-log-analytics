@@ -1,0 +1,20 @@
+{
+  "execution_summary": {
+    "started_at_utc": "2026-05-14T09:26:03Z",
+    "ended_at_utc": "2026-05-14T09:26:16Z",
+    "execution_mode": "Alibaba Cloud ECS + Hadoop Streaming local mode + Ray local mode",
+    "dataset_source": "OSS bucket cloud-service-log-analytics / cloud_service_logs.csv"
+  },
+  "durations_seconds": {
+    "hadoop_streaming_baseline": 8.797,
+    "ray_degraded_service_detection": 4.366
+  },
+  "sha256": {
+    "dataset_csv": "99431fec3b24a84cf981d381d8d87419968b135e18c8bee19c670d9c27da35b0",
+    "request_count_by_service_txt": "8ed3b3e6745e501815ddf58ab25db9c5a9cb08360315c1c6ac56dbb08916213a",
+    "server_error_count_by_service_txt": "7ec465c9e00791e3658b8e2186b35a0c3f39fe3a8f8ca69b7fd598aab158ae98",
+    "top_10_slow_endpoints_txt": "c5ea34a404cd155d4202d476cb90db7349478d5e22aa8943f9179a986b741896",
+    "degraded_service_detection_txt": "6c831180254f8cfa2250d9047f60ca6e5023e49cb1b9030268c6360497c50d61",
+    "degraded_service_metrics_json": "4704865fd462e29b61fcf12ce096c544a78ab38d49ed341303bb474c6a015fdf"
+  }
+}

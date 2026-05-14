@@ -2,6 +2,27 @@
 
 Code package for `Comp3041J MiniProject 2`.
 
+## Important execution note
+
+This repository contains two different execution paths:
+
+- `run_pipeline.py`
+  local validation only
+- `scripts/run_hadoop_streaming.sh` + `scripts/run_ray_extension.sh`
+  formal cloud execution path
+
+If you run:
+
+```bash
+./.venv/bin/python run_pipeline.py
+```
+
+the generated `runtime_report.json` will describe:
+
+`local Python MapReduce simulation + Ray local mode`
+
+This is useful for quick checking, but it is not the cloud execution evidence for the final project.
+
 ## Deployment target
 
 This repository is structured for a real Alibaba Cloud workflow:
@@ -14,6 +35,8 @@ This repository is structured for a real Alibaba Cloud workflow:
 The local Python MapReduce scripts are still kept for quick validation, but the deployable path in this repository is:
 
 `OSS -> ECS -> Hadoop Streaming -> Ray`
+
+The formal project evidence should come from this deployable path, not from `run_pipeline.py`.
 
 ## Repository structure
 
@@ -108,6 +131,13 @@ Upload the provided CSV into a bucket path such as:
 ### 3. Copy the repository to ECS
 
 Clone or upload this repository to the ECS instance.
+
+After the repository is on ECS, do not start with `run_pipeline.py` if you want the formal cloud result. The correct order is:
+
+1. bootstrap the ECS environment
+2. download the dataset from OSS
+3. run Hadoop Streaming
+4. run Ray
 
 ### 4. Bootstrap the ECS instance
 
@@ -204,6 +234,20 @@ For the report, keep:
 - the runtime evidence in `outputs/runtime_report.json`
 - the correctness checks in `outputs/validation_report.json`
 
+## Minimal cloud run sequence
+
+If Hadoop is already installed on the ECS instance, the minimal cloud run is:
+
+```bash
+cd /root/workspace/CloudServiceLogAnalytics
+./scripts/bootstrap_ecs.sh
+aliyun oss cp oss://cloud-service-log-analytics/cloud_service_logs.csv data/cloud_service_logs.csv --force
+JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 HADOOP_HOME=/opt/hadoop RUN_MODE=local ./scripts/run_hadoop_streaming.sh
+PYTHON_BIN=./.venv/bin/python ./scripts/run_ray_extension.sh
+```
+
+This is the path that produces the formal cloud outputs used in the report.
+
 ## Local validation
 
 For local development only, you can still run:
@@ -213,6 +257,8 @@ For local development only, you can still run:
 ```
 
 This runs the local MapReduce simulation plus Ray local mode for quick checking only.
+
+It does not run Hadoop Streaming and it should not be cited as the final cloud execution evidence.
 
 ## Notes
 

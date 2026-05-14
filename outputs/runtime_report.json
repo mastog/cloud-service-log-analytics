@@ -6,26 +6,30 @@
     "dataset_source": "OSS bucket cloud-service-log-analytics / cloud_service_logs.csv",
     "ecs_host": "182.92.80.106"
   },
+  "run_window": {
+    "started_at_utc": "2026-05-14T09:26:03Z",
+    "ended_at_utc": "2026-05-14T09:26:16Z"
+  },
   "jobs": [
     {
       "label": "request_count_by_service",
       "execution_layer": "hadoop_streaming",
-      "duration_seconds": 10
+      "duration_seconds": 8.797
     },
     {
       "label": "server_error_count_by_service",
       "execution_layer": "hadoop_streaming",
-      "duration_seconds": 10
+      "duration_seconds": 8.797
     },
     {
       "label": "top_10_slow_endpoints",
       "execution_layer": "hadoop_streaming",
-      "duration_seconds": 10
+      "duration_seconds": 8.797
     },
     {
       "label": "degraded_service_detection",
       "execution_layer": "ray_local_mode",
-      "duration_seconds": 4
+      "duration_seconds": 4.366
     }
   ]
 }
