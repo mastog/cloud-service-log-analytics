@@ -54,9 +54,9 @@ Since the scheduling arrangement for each ECS task execution cannot be completel
 
 ### 1. MapReduce Baseline
 The three baseline tasks were executed using a remote Python MapReduce simulation. The processing times for these tasks are as follows:
-**Request Count by Service:** 5.2344 seconds
-**Server Error Count by Service:** 3.5787 seconds
-**Top 10 Slow Endpoints:** 3.4881 seconds
+**Request Count by Service:** 5.2344 seconds  
+**Server Error Count by Service:** 3.5787 seconds  
+**Top 10 Slow Endpoints:** 3.4881 seconds  
 
 ### 2. Ray Extension Analytics
 **Degraded Service Detection:** 5.1486 seconds
