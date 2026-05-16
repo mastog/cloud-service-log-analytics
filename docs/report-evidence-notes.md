@@ -53,7 +53,7 @@ The execution performance was measured on an Alibaba Cloud ECS instance (Ubuntu 
 Since the scheduling arrangement for each ECS task execution cannot be completely guaranteed to be exactly the same, the running time of each execution will also vary slightly. The results below are the averages obtained after 20 executions, and the error for each execution will not exceed plus or minus 0.8 seconds.
 
 ### 1. MapReduce Baseline
-The three baseline tasks were executed using a remote Python MapReduce simulation. The processing times for these tasks are as follows:
+The three baseline tasks were executed using a using Hadoop Streaming on the ECS instance. The processing times for these tasks are as follows:
 **Request Count by Service:** 5.2344 seconds  
 **Server Error Count by Service:** 3.5787 seconds  
 **Top 10 Slow Endpoints:** 3.4881 seconds  
